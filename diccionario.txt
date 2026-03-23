@@ -1,0 +1,6 @@
+perro:perro
+perro:dog
+dog:perro
+red:rojo
+red:rojo
+green:verde
