@@ -4,3 +4,9 @@ dog:perro
 red:rojo
 red:rojo
 green:verde
+child:niño
+child:niño
+blue:azul
+yellow:amarillo
+brown:cafe
+dog:perro
