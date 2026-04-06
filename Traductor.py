@@ -19,8 +19,7 @@ def registrar_palabra():
     entrada_esp.delete(0, tk.END)
 
 def buscar_traduccion(Palabra):
-    buscar = entrada_busqueda.get().strip()
-    
+    buscar = entrada_busqueda.get().strip()  
     try:
         with open(ARCHIVO, "r") as f:
             lineas = f.readlines() 

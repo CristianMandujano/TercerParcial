@@ -1,12 +1,2 @@
-perro:perro
-perro:dog
-dog:perro
 red:rojo
-red:rojo
-green:verde
-child:niño
-child:niño
-blue:azul
-yellow:amarillo
-brown:cafe
-dog:perro
+green:verdepurple:morado
