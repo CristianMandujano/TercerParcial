@@ -1,2 +1,5 @@
-red:rojo
-green:verdepurple:morado
+blue:azul
+brown:cafe
+car:carro
+phone:celular
+table:mesa

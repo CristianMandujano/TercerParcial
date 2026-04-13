@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 from PIL import Image, ImageTk
 from datetime import date
+#Investigue la libreria de la fecha por que no me salia el calculo jajajjaja
 
 Signoss = ["Raton", "Toro", "Tigre", "Conejo", "Dragon", 
                    "Serpiente", "Caballo", "Cabra", "Mono", "Gallo", "Perro", "Cerdo"]
@@ -39,7 +40,7 @@ def imprimir_resultado():
     except FileNotFoundError:
         messagebox.showerror("Error", f"No se encontró el archivo: {Signoss}.jpeg en la carpeta imagenesSigno")
     except Exception as e:
-        messagebox.showerror("Error inesperado", str(e))
+        messagebox.showerror("Error", str(e))
 
 root = tk.Tk()
 root.title("Zodiaco")

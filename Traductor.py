@@ -18,8 +18,18 @@ def registrar_palabra():
     entrada_ing.delete(0, tk.END)
     entrada_esp.delete(0, tk.END)
 
-def buscar_traduccion(Palabra):
-    buscar = entrada_busqueda.get().strip()  
+def buscar_traduccion():
+    modo = opcion_var.get()  
+    buscar = entrada_busqueda.get().strip()
+    
+    if modo == "ninguno":
+        messagebox.showwarning("Error", "Selecciona la traducción")
+        return
+
+    if not buscar:
+        messagebox.showwarning("Error", "Escribe una palabra para buscar")
+        return
+
     try:
         with open(ARCHIVO, "r") as f:
             lineas = f.readlines() 
@@ -30,24 +40,26 @@ def buscar_traduccion(Palabra):
             if len(datos) == 2:
                 ingles, espanol = datos
 
-                if Palabra == "en_es" and ingles == buscar:
+                if modo == "en_es" and ingles.lower() == buscar.lower():
                     lbl_resultado.config(text=f"Español: {espanol}", fg="green")
                     encontrado = True
                     break
-                elif Palabra == "es_en" and espanol == buscar:
+                elif modo == "es_en" and espanol.lower() == buscar.lower():
                     lbl_resultado.config(text=f"Inglés: {ingles}", fg="green")
                     encontrado = True
                     break
         
         if not encontrado:
-            lbl_resultado.config(text="No encontrada", fg="red" )
+            lbl_resultado.config(text="No encontrada", fg="red")
             
     except FileNotFoundError:
-        messagebox.showerror("Error", "Registra una palabra primero.")
+        messagebox.showerror("Error", "El archivo no existe. Registra una palabra primero.")
 
 ventana = tk.Tk()
 ventana.title("Traductor")
-ventana.geometry("400x450")
+ventana.geometry("400x550")
+
+opcion_var = tk.StringVar(value="nada")
 
 tk.Label(ventana, text="Palabra a buscar", font=("Arial", 12, "bold")).pack(pady=10)
 entrada_busqueda = tk.Entry(ventana, width=30)
@@ -57,8 +69,11 @@ tk.Label(ventana, text="Traducción: ", font=("Arial", 12, "bold")).pack(pady=10
 
 f_btns = tk.Frame(ventana)
 f_btns.pack(pady=10)
-tk.Button(f_btns, text="Ingles-Español", command=lambda:buscar_traduccion("en_es")).grid(row=0, column=0, padx=5)
-tk.Button(f_btns, text="Español-Ingles", command=lambda:buscar_traduccion("es_en")).grid(row=0, column=1, padx=5)
+
+tk.Radiobutton(f_btns, text="Ingles-Español", variable=opcion_var, value="en_es").grid(row=0, column=0, padx=5)
+tk.Radiobutton(f_btns, text="Español-Ingles", variable=opcion_var, value="es_en").grid(row=0, column=1, padx=5)
+
+tk.Button(ventana, text="Traducir", command=buscar_traduccion).pack(pady=5)
 
 lbl_resultado = tk.Label(ventana, text="", font=("Arial", 12))
 lbl_resultado.pack(pady=10)

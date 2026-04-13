@@ -1,3 +1,4 @@
+
 import tkinter as tk 
 from tkinter import messagebox
 
@@ -69,10 +70,5 @@ btn_limpiar = tk.Button(ventana, text="Limpiar", width=12, command=limpiar_texto
 btn_limpiar.grid(row=3, column=1)
 
 # Ejecutar aplicacion
-ventana.mainloop()
-
-
-    
-
-
+ventana.mainloop()  
     
