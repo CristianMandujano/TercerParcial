@@ -1,0 +1,5 @@
+--- VENTA ---
+Cliente: cris
+Detalle: 1 pizza(s) Grande con Jamon, Piña
+TOTAL: $140
+-------------------------
